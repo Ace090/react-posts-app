@@ -3,6 +3,7 @@ import { Post } from "../interfaces/post.interface";
 import { User } from "../interfaces/user.interface";
 import PostCard from "../components/PostCard";
 import { fetchPosts, fetchUsers } from "../services/postService";
+import "../App.css";
 
 function PostListPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -13,11 +14,29 @@ function PostListPage() {
     user: User;
   } | null>(null);
 
+  // Function to close the modal
+  const closeModal = () => {
+    setSelectedPost(null);
+  };
+
   const handlePostClick = (post: Post, user: User) => {
     setSelectedPost({ post, user });
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,25 +63,24 @@ function PostListPage() {
     <div className="app-container">
       <h1 className="app-title">📋 Post List</h1>
 
-      {/* Selected Post Card */}
+      {/* Selected Post Modal */}
       {selectedPost && (
-        <div className="selected-post-card">
-          <div className="selected-post-header">
-            post pubblicato da: {selectedPost.user.name} alias
-            <span style={{ color: "#FF0000", marginLeft: 5 }}>
-              {selectedPost.user.username}
-            </span>
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="selected-post-header">
+              post pubblicato da: {selectedPost.user.name} alias
+              <span style={{ color: "#FF0000", marginLeft: 5 }}>
+                {selectedPost.user.username}
+              </span>
+            </div>
+
+            <h2 className="selected-post-title">{selectedPost.post.title}</h2>
+            <p className="selected-post-body">{selectedPost.post.body}</p>
+
+            <button className="selected-post-button" onClick={closeModal}>
+              Chiudi
+            </button>
           </div>
-
-          <h2 className="selected-post-title">{selectedPost.post.title}</h2>
-          <p className="selected-post-body">{selectedPost.post.body}</p>
-
-          <button
-            className="selected-post-button"
-            onClick={() => setSelectedPost(null)}
-          >
-            Chiudi
-          </button>
         </div>
       )}
 
