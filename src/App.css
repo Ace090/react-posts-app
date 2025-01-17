@@ -1,3 +1,20 @@
+/* Default light theme */
+:root {
+  --color-text: #213547; /* Testi scuri */
+  --color-background: #ffffff; /* Sfondo bianco */
+  --color-primary: #ff0000; /* Colore principale (rosso) */
+  --color-modal-text: #213547; /* Testo della modale */
+  --color-modal-background: #ffffff; /* Sfondo della modale */
+}
+
+/* Dark theme */
+.dark-theme {
+  --color-text: #ffffff; /* Testi chiari */
+  --color-background: #242424; /* Sfondo scuro */
+  --color-primary: #00aaff; /* Colore principale (blu) */
+  --color-modal-text: #ffffff; /* Testo della modale */
+  --color-modal-background: #333333; /* Sfondo della modale */
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -46,10 +63,15 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 /* Main container */
 .app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 1rem 2rem;
   max-width: 1000px;
   margin: 0 auto;
@@ -80,7 +102,7 @@ body {
 
 /* Selected post title */
 .selected-post-title {
-  color: #ff0000;
+  color: var(--color-primary);
   line-height: normal;
   margin: 5px 0;
 }
@@ -94,8 +116,8 @@ body {
 
 /* Button for closing the selected post */
 .selected-post-button {
-  margin: 5px 0;
-  background-color: #ff0000;
+  margin-top: 15px;
+  background-color: var(--color-primary);
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -117,7 +139,7 @@ body {
 .post-card-square {
   width: 50px;
   height: 50px;
-  background-color: #ff0000;
+  background-color: var(--color-primary);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -130,6 +152,8 @@ body {
 
 /* PostCard content */
 .post-card-content {
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }
 
@@ -140,7 +164,7 @@ body {
   margin: 0;
   line-height: normal;
   padding-bottom: 5px;
-  color: #ff0000;
+  color: var(--color-primary);
 }
 
 /* Metadata inside PostCard */
@@ -152,7 +176,7 @@ body {
 
 /* Link style for metadata */
 .post-card-meta a {
-  color: #ff0000;
+  color: var(--color-primary);
   text-decoration-line: underline;
 }
 
@@ -172,8 +196,10 @@ body {
 
 /* Modal content */
 .modal-content {
-  background-color: #fff;
-  padding: 1rem;
+  background-color: var(--color-modal-background);
+  color: var(--color-modal-text);
+  padding: 1.5rem;
+  margin: 1rem;
   border-radius: 8px;
   max-width: 500px;
   width: 90%;
@@ -184,7 +210,7 @@ body {
 /* Close button */
 .modal-button {
   margin-top: 1rem;
-  background-color: #ff0000;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -195,4 +221,46 @@ body {
 /* Header for selected post */
 .selected-post-header {
   margin-bottom: 1rem;
+}
+
+/*  Tablet Breakpoint (768px) */
+@media (max-width: 768px) {
+  .post-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .post-card-title {
+    font-size: 1.25rem;
+  }
+
+  .modal-content {
+    max-width: 90%;
+  }
+}
+
+/* Phone Breakpoint (480px) */
+@media (max-width: 480px) {
+  .app-container {
+    justify-content: center;
+  }
+  .post-card {
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .post-card-content {
+    align-items: center;
+    padding: 0rem 5rem;
+  }
+
+  .post-card-title {
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    padding: 0.5rem;
+  }
+  .post-card-meta {
+    align-items: center;
+  }
 }

@@ -32,7 +32,6 @@ function PostCard({ post, user, onClick }: PostCardProps) {
           <Link
             to={`/user/${user.id}`}
             state={{ user }} // Pass the user as state
-            style={{ color: "#FF0000", textDecorationLine: "underline" }}
           >
             {user?.username}
           </Link>

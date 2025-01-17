@@ -14,6 +14,19 @@ function PostListPage() {
     user: User;
   } | null>(null);
 
+  // Theme state
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setIsDarkTheme((prev) => !prev);
+    if (!isDarkTheme) {
+      document.documentElement.classList.add("dark-theme");
+    } else {
+      document.documentElement.classList.remove("dark-theme");
+    }
+  };
+
   // Function to close the modal
   const closeModal = () => {
     setSelectedPost(null);
@@ -62,6 +75,22 @@ function PostListPage() {
   return (
     <div className="app-container">
       <h1 className="app-title">📋 Post List</h1>
+
+      {/* Theme toggle button */}
+      <button
+        onClick={toggleTheme}
+        style={{
+          marginBottom: "1rem",
+          padding: "0.5rem 1rem",
+          backgroundColor: "var(--color-primary)",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
+      >
+        Cambia Tema
+      </button>
 
       {/* Selected Post Modal */}
       {selectedPost && (
