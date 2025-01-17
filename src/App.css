@@ -1,0 +1,156 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container */
+.app-container {
+  padding: 1rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main title */
+.app-title {
+  text-align: center;
+}
+
+/* Selected post card */
+.selected-post-card {
+  border: 15px solid rgba(128, 128, 128, 0.05);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Selected post header */
+.selected-post-header {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Selected post title */
+.selected-post-title {
+  color: #ff0000;
+  line-height: normal;
+  margin: 5px 0;
+}
+
+/* Selected post body */
+.selected-post-body {
+  line-height: normal;
+  margin: 5px 0;
+  padding: 0;
+}
+
+/* Button for closing the selected post */
+.selected-post-button {
+  margin: 5px 0;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+/* PostCard component container */
+.post-card {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  gap: 1rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Colored square with initials */
+.post-card-square {
+  width: 50px;
+  height: 50px;
+  background-color: #ff0000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* PostCard content */
+.post-card-content {
+  text-align: left;
+}
+
+/* Post title inside PostCard */
+.post-card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: normal;
+  padding-bottom: 5px;
+  color: #ff0000;
+}
+
+/* Metadata inside PostCard */
+.post-card-meta {
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: normal;
+}
+
+/* Link style for metadata */
+.post-card-meta a {
+  color: #ff0000;
+  text-decoration-line: underline;
+}
