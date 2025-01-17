@@ -1,20 +1,21 @@
 /* Default light theme */
 :root {
-  --color-text: #213547; /* Testi scuri */
-  --color-background: #ffffff; /* Sfondo bianco */
-  --color-primary: #ff0000; /* Colore principale (rosso) */
-  --color-modal-text: #213547; /* Testo della modale */
-  --color-modal-background: #ffffff; /* Sfondo della modale */
+  --color-text: #213547;
+  --color-background: #ffffff;
+  --color-primary: #f44336;
+  --color-modal-text: #213547;
+  --color-modal-background: #ffffff;
 }
 
 /* Dark theme */
 .dark-theme {
-  --color-text: #ffffff; /* Testi chiari */
-  --color-background: #242424; /* Sfondo scuro */
-  --color-primary: #00aaff; /* Colore principale (blu) */
-  --color-modal-text: #ffffff; /* Testo della modale */
-  --color-modal-background: #333333; /* Sfondo della modale */
+  --color-text: #ffffff; /* Testo chiaro */
+  --color-background: #202020; /* Grigio scuro */
+  --color-primary: #03dac6; /* Verde acqua Material */
+  --color-modal-text: #ffffff;
+  --color-modal-background: #2a2a2a; /* Sfondo modale leggermente più chiaro */
 }
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -79,7 +80,12 @@ body {
 
 /* Main title */
 .app-title {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-text);
 }
 
 /* Selected post card */
@@ -218,11 +224,6 @@ body {
   cursor: pointer;
 }
 
-/* Header for selected post */
-.selected-post-header {
-  margin-bottom: 1rem;
-}
-
 /*  Tablet Breakpoint (768px) */
 @media (max-width: 768px) {
   .post-card {
@@ -263,4 +264,29 @@ body {
   .post-card-meta {
     align-items: center;
   }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  align-self: flex-end;
+  /* width: 50px;
+  height: 50px; */
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.user-detail-go-back-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration-line: underline;
 }

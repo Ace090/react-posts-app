@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaListAlt, FaSun, FaMoon } from "react-icons/fa";
 import { Post } from "../interfaces/post.interface";
 import { User } from "../interfaces/user.interface";
 import PostCard from "../components/PostCard";
@@ -74,23 +75,21 @@ function PostListPage() {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">📋 Post List</h1>
-
       {/* Theme toggle button */}
-      <button
-        onClick={toggleTheme}
-        style={{
-          marginBottom: "1rem",
-          padding: "0.5rem 1rem",
-          backgroundColor: "var(--color-primary)",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
-      >
-        Cambia Tema
+      <button onClick={toggleTheme} className="theme-toggle-btn">
+        {isDarkTheme ? (
+          <FaSun size={24} color="#fff" />
+        ) : (
+          <FaMoon size={24} color="#fff" />
+        )}
       </button>
+
+      <h1>
+        <div className="app-title">
+          <FaListAlt size={50} />
+          <span>Post List</span>
+        </div>
+      </h1>
 
       {/* Selected Post Modal */}
       {selectedPost && (
@@ -98,7 +97,7 @@ function PostListPage() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="selected-post-header">
               post pubblicato da: {selectedPost.user.name} alias
-              <span style={{ color: "#FF0000", marginLeft: 5 }}>
+              <span style={{ color: "var(--color-primary)", marginLeft: 5 }}>
                 {selectedPost.user.username}
               </span>
             </div>

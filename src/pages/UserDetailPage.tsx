@@ -1,8 +1,10 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { User } from "../interfaces/user.interface";
+import "../App.css";
 
 function UserDetailPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const state = location.state as { user?: User } | null; // Allow for undefined state
   const user = state?.user;
 
@@ -14,9 +16,13 @@ function UserDetailPage() {
           The requested user could not be found. Please go back to the post
           list.
         </p>
-        <Link to="/" style={{ color: "#FF0000", textDecoration: "underline" }}>
+        <button
+          className="user-detail-go-back-btn"
+          onClick={() => navigate(-1)}
+          style={{}}
+        >
           Back to Posts
-        </Link>
+        </button>
       </div>
     );
   }
@@ -39,9 +45,9 @@ function UserDetailPage() {
       <p>
         <strong>Website:</strong> {user.website}
       </p>
-      <Link to="/" style={{ color: "#FF0000", textDecoration: "underline" }}>
+      <button onClick={() => navigate(-1)} className="user-detail-go-back-btn">
         Back to Posts
-      </Link>
+      </button>
     </div>
   );
 }
