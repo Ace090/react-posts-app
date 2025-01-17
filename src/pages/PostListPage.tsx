@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaListAlt, FaSun, FaMoon } from "react-icons/fa";
+import { FaListAlt, FaSun, FaMoon, FaThLarge } from "react-icons/fa";
 import { Post } from "../interfaces/post.interface";
 import { User } from "../interfaces/user.interface";
 import PostCard from "../components/PostCard";
@@ -18,6 +18,9 @@ function PostListPage() {
   // Theme state
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
+  // View mode state (grid or list)
+  const [isGridView, setIsGridView] = useState(false);
+
   // Toggle theme
   const toggleTheme = () => {
     setIsDarkTheme((prev) => !prev);
@@ -26,6 +29,11 @@ function PostListPage() {
     } else {
       document.documentElement.classList.remove("dark-theme");
     }
+  };
+
+  // Toggle view mode
+  const toggleViewMode = () => {
+    setIsGridView((prev) => !prev);
   };
 
   // Function to close the modal
@@ -75,14 +83,24 @@ function PostListPage() {
 
   return (
     <div className="app-container">
-      {/* Theme toggle button */}
-      <button onClick={toggleTheme} className="theme-toggle-btn">
-        {isDarkTheme ? (
-          <FaSun size={24} color="#fff" />
-        ) : (
-          <FaMoon size={24} color="#fff" />
-        )}
-      </button>
+      {/* Theme and View Mode toggle buttons */}
+      <div className="header-controls">
+        <button onClick={toggleTheme} className="theme-toggle-btn">
+          {isDarkTheme ? (
+            <FaSun size={24} color="#fff" />
+          ) : (
+            <FaMoon size={24} color="#fff" />
+          )}
+        </button>
+
+        <button onClick={toggleViewMode} className="theme-toggle-btn">
+          {isGridView ? (
+            <FaListAlt size={24} color="#fff" />
+          ) : (
+            <FaThLarge size={24} color="#fff" />
+          )}
+        </button>
+      </div>
 
       <h1>
         <div className="app-title">
@@ -113,18 +131,20 @@ function PostListPage() {
       )}
 
       {/* Post List */}
-      {posts.map((post) => {
-        const user = users.find((u) => u.id === post.userId);
-        if (!user) return null; // skip if user is not found
-        return (
-          <PostCard
-            key={post.id}
-            post={post}
-            user={user}
-            onClick={() => handlePostClick(post, user)}
-          />
-        );
-      })}
+      <div className={isGridView ? "post-grid" : "post-list"}>
+        {posts.map((post) => {
+          const user = users.find((u) => u.id === post.userId);
+          if (!user) return null; // skip if user is not found
+          return (
+            <PostCard
+              key={post.id}
+              post={post}
+              user={user}
+              onClick={() => handlePostClick(post, user)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

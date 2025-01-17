@@ -9,11 +9,11 @@
 
 /* Dark theme */
 .dark-theme {
-  --color-text: #ffffff; /* Testo chiaro */
-  --color-background: #202020; /* Grigio scuro */
-  --color-primary: #03dac6; /* Verde acqua Material */
+  --color-text: #ffffff;
+  --color-background: #202020;
+  --color-primary: #03dac6;
   --color-modal-text: #ffffff;
-  --color-modal-background: #2a2a2a; /* Sfondo modale leggermente più chiaro */
+  --color-modal-background: #2a2a2a;
 }
 
 #root {
@@ -270,8 +270,6 @@ body {
 /* Theme Toggle Button */
 .theme-toggle-btn {
   align-self: flex-end;
-  /* width: 50px;
-  height: 50px; */
   background-color: var(--color-primary);
   color: #fff;
   border: none;
@@ -297,16 +295,33 @@ button {
 }
 
 button:hover {
-  transform: scale(1.05); /* Ingrandisce leggermente il bottone */
+  transform: scale(1.05);
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-20px); /* Inizia leggermente spostato verso l'alto */
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Finisce nella posizione normale */
+    transform: translateY(0);
   }
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
